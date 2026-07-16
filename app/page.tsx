@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { Hero } from "@/features/home/hero";
 import {
@@ -29,6 +30,7 @@ export default function HomePage() {
       <LatestCertificationsSection />
       <ContactCtaSection />
       <Analytics />
+      <SpeedInsights />
     </>
   );
 }
