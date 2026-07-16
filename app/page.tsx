@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
 
 import { Hero } from "@/features/home/hero";
 import {
@@ -27,6 +28,7 @@ export default function HomePage() {
       <RecentExperienceSection />
       <LatestCertificationsSection />
       <ContactCtaSection />
+      <Analytics />
     </>
   );
 }
