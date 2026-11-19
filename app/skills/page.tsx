@@ -14,6 +14,7 @@ export default function SkillsPage() {
   return (
     <>
       <PageHeader
+        figure="plot"
         crumbs={[{ label: "Skills" }]}
         eyebrow="Capabilities"
         title="Skills"

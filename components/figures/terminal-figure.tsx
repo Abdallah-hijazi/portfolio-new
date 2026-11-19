@@ -1,7 +1,7 @@
 "use client";
 
 import { useReducedMotion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 import type { FigurePointer } from "./use-figure-pointer";
 import { hair, planeMatrix } from "./iso";
@@ -19,6 +19,7 @@ export function TerminalFigure({ p }: { p: FigurePointer }) {
   const speed = useRef(4);
   speed.current = 4 + p.a * 22;
   const ref = useRef<SVGSVGElement>(null);
+  const clipId = `term-clip-${useId().replace(/:/g, "")}`;
 
   useEffect(() => {
     if (reduceMotion) return;
@@ -55,7 +56,7 @@ export function TerminalFigure({ p }: { p: FigurePointer }) {
   return (
     <svg ref={ref} viewBox="0 0 200 160" className="h-full w-full" aria-hidden>
       <defs>
-        <clipPath id="term-clip">
+        <clipPath id={clipId}>
           <rect x={4} y={13} width={W - 8} height={D - 17} />
         </clipPath>
       </defs>
@@ -69,7 +70,7 @@ export function TerminalFigure({ p }: { p: FigurePointer }) {
         {[6, 11, 16].map((cx) => (
           <circle key={cx} cx={cx} cy={5} r={1.5} className="fig-lit" fill="none" {...hair} />
         ))}
-        <g clipPath="url(#term-clip)">
+        <g clipPath={`url(#${clipId})`}>
           <g transform={`translate(0 ${-offset})`}>
             {lines.map((len, i) => (
               <g key={i}>

@@ -10,18 +10,25 @@ export function BlurInText({
   className,
   delay = 0,
   stagger = 0.035,
+  by = "char",
 }: {
   text: string;
   className?: string;
   delay?: number;
   stagger?: number;
+  by?: "char" | "word";
 }) {
   const reduceMotion = useReducedMotion();
   if (reduceMotion) return <span className={className}>{text}</span>;
 
   return (
     <span className={cn("inline-block", className)} aria-label={text}>
-      {Array.from(text).map((ch, i) => (
+      {(by === "word" ? text.split(/(\s+)/) : Array.from(text)).map((ch, i) =>
+        by === "word" && /^\s+$/.test(ch) ? (
+          <span key={`s-${i}`} aria-hidden>
+            {" "}
+          </span>
+        ) : (
         <motion.span
           key={`${ch}-${i}`}
           aria-hidden
@@ -36,7 +43,8 @@ export function BlurInText({
         >
           {ch}
         </motion.span>
-      ))}
+        ),
+      )}
     </span>
   );
 }

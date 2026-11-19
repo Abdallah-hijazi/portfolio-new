@@ -16,10 +16,10 @@
   --foreground: 220 25% 96%;
   --muted: 222 11% 64%;
 
-  /* Developer mode (default): violet / indigo */
-  --accent: 258 90% 66%;
-  --accent-strong: 258 96% 76%;
-  --accent-soft: 258 60% 24%;
+  /* Developer mode (default): monochrome silver */
+  --accent: 220 14% 82%;
+  --accent-strong: 0 0% 98%;
+  --accent-soft: 240 6% 15%;
 }
 
 [data-mode="security"] {
@@ -114,26 +114,14 @@
     box-shadow: 0 0 32px -10px hsl(var(--accent) / 0.35);
   }
 
+  /* Kept for compatibility — now a solid, non-gradient emphasis colour */
   .text-gradient {
-    background: linear-gradient(
-      92deg,
-      hsl(var(--foreground)),
-      hsl(var(--accent-strong)) 55%,
-      hsl(var(--accent))
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: hsl(var(--foreground));
   }
 
-  /* Dotted blueprint grid backdrop */
+  /* Grid backdrop retired in the hairline redesign */
   .grid-bg {
-    background-image:
-      linear-gradient(hsl(var(--line) / 0.5) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--line) / 0.5) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+    display: none;
   }
 
   /* CRT scanline overlay for security mode */

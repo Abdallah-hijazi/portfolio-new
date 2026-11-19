@@ -15,6 +15,7 @@ export default function ProjectsPage() {
   return (
     <>
       <PageHeader
+        figure="exploded"
         crumbs={[{ label: "Projects" }]}
         eyebrow="Case studies"
         title="Projects"

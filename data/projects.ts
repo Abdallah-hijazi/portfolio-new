@@ -141,7 +141,7 @@ export const projects: Project[] = [
     screenshots: [
       {
         alt: "Competition scoring dashboard",
-        caption: "TODO: add a real screenshot of the scoring dashboard.",
+        caption: "",
       },
     ],
     modes: ["developer"],
@@ -209,7 +209,7 @@ export const projects: Project[] = [
     screenshots: [
       {
         alt: "Interphase responsive interface",
-        caption: "TODO: add a real screenshot.",
+        caption: "",
       },
     ],
     modes: ["developer"],
@@ -262,7 +262,7 @@ export const projects: Project[] = [
     screenshots: [
       {
         alt: "Multilingual storefront",
-        caption: "TODO: add a real screenshot.",
+        caption: "",
       },
     ],
     modes: ["developer"],
@@ -622,7 +622,7 @@ export const projects: Project[] = [
     solution:
       "An app-like portfolio with a mode system: each identity gets its own themed workspace with purpose-built UI (glassmorphism, terminal emulator, data dashboard, timeline), unified by a shared design system, global search, and keyboard-first navigation.",
     architecture: [
-      "Next.js 15 App Router with output:export — fully static, GitHub Pages ready",
+      "Next.js 15 App Router, statically exported and deployed on Vercel",
       "Mode context drives a CSS-variable theme system with per-mode accents",
       "Feature-sliced structure: features/terminal, features/search, features/modes",
       "Fuse.js search index built from typed data files at module load",
@@ -649,8 +649,7 @@ export const projects: Project[] = [
       { label: "Identities", value: "4 modes" },
     ],
     links: {
-      github: "https://github.com/Abdallah-hijazi",
-      // TODO(owner): point to the exact repo once pushed.
+      github: "https://github.com/Abdallah-hijazi/portfolio-new",
     },
     screenshots: [
       {

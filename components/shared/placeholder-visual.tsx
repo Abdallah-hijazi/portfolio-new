@@ -1,38 +1,38 @@
-import { ImageIcon } from "lucide-react";
+"use client";
 
+import { InteractiveFigure, type FigureKind } from "@/components/figures";
+import { Particles } from "@/components/magic/particles";
 import { cn } from "@/lib/utils";
 
 /**
- * Styled placeholder for screenshots/photos that have not been added yet.
- * Keeps layout honest without fabricating imagery.
+ * Visual block for projects without public screenshots: a cursor-reactive
+ * hairline figure over a quiet particle field. Never fabricates imagery.
  */
 export function PlaceholderVisual({
   label,
   className,
-  icon: Icon = ImageIcon,
+  kind = "exploded",
+  note,
 }: {
   label: string;
   className?: string;
-  icon?: typeof ImageIcon;
+  kind?: FigureKind;
+  note?: string;
 }) {
   return (
     <div
       role="img"
       aria-label={label}
       className={cn(
-        "relative flex items-center justify-center overflow-hidden rounded-2xl border border-dashed border-line bg-surface",
+        "relative flex items-center justify-center overflow-hidden rounded-2xl border border-line bg-surface/60",
         className,
       )}
     >
-      <div className="grid-bg absolute inset-0 opacity-60" aria-hidden />
-      <div className="relative z-10 flex flex-col items-center gap-3 p-8 text-center">
-        <span className="flex size-12 items-center justify-center rounded-2xl bg-accent-soft text-accent-strong">
-          <Icon className="size-5" aria-hidden />
-        </span>
-        <p className="max-w-[24ch] font-mono text-xs leading-relaxed text-muted">
-          {label}
-        </p>
-      </div>
+      <Particles quantity={40} />
+      <InteractiveFigure kind={kind} className="relative z-10 h-full max-h-[22rem]" />
+      {note && (
+        <p className="absolute bottom-3 left-4 z-10 font-mono text-[11px] text-muted">{note}</p>
+      )}
     </div>
   );
 }

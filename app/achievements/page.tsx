@@ -36,6 +36,7 @@ export default function AchievementsPage() {
   return (
     <>
       <PageHeader
+        figure="padlock"
         crumbs={[{ label: "Achievements" }]}
         eyebrow="Milestones"
         title="Achievements"

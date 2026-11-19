@@ -14,6 +14,7 @@ export default function ExperiencePage() {
   return (
     <>
       <PageHeader
+        figure="terminal"
         crumbs={[{ label: "Experience" }]}
         eyebrow="Career"
         title="Experience"

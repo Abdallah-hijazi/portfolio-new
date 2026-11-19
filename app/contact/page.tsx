@@ -49,6 +49,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader
+        figure="terminal"
         crumbs={[{ label: "Contact" }]}
         eyebrow="Say hello"
         title="Let's talk"

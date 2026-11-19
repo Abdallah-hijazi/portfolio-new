@@ -47,6 +47,7 @@ export default function AiDataPage() {
   return (
     <>
       <PageHeader
+        figure="plot"
         crumbs={[{ label: "AI & Data Mode" }]}
         eyebrow="ai.workspace"
         title="Data-driven, model-aware engineering"

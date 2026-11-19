@@ -11,6 +11,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { figureForCategory } from "@/components/figures/figure-kind";
 import { PageHeader } from "@/components/shared/page-header";
 import { PlaceholderVisual } from "@/components/shared/placeholder-visual";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -70,6 +71,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <JsonLd data={jsonLd} />
 
       <PageHeader
+        figure={figureForCategory(project.category)}
         crumbs={[{ label: "Projects", href: "/projects" }, { label: project.title }]}
         eyebrow={`${project.category} · ${project.year}`}
         title={project.title}
@@ -87,15 +89,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {/* Screenshots */}
           <Reveal>
             <section aria-label="Screenshots">
-              <div className="grid gap-4 sm:grid-cols-2">
-                {project.screenshots.map((shot, i) => (
-                  <PlaceholderVisual
-                    key={i}
-                    label={shot.caption ?? shot.alt}
-                    className={i === 0 ? "aspect-video sm:col-span-2" : "aspect-video"}
-                  />
-                ))}
-              </div>
+              <PlaceholderVisual
+                kind={figureForCategory(project.category)}
+                label={project.screenshots[0]?.alt ?? project.title}
+                note={project.linksNote ? "client work · visuals kept private" : undefined}
+                className="aspect-video"
+              />
             </section>
           </Reveal>
 

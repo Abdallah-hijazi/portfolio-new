@@ -1,7 +1,9 @@
 import { ArrowRight, Award, BriefcaseBusiness } from "lucide-react";
 import Link from "next/link";
 
+import { BorderBeam } from "@/components/magic/border-beam";
 import { Marquee } from "@/components/magic/marquee";
+import { Particles } from "@/components/magic/particles";
 import { AnimatedCounter } from "@/components/motion/animated-counter";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
@@ -194,15 +196,9 @@ export function ContactCtaSection() {
     <section aria-label="Get in touch" className="container pb-28">
       <Reveal>
         <div className="glass relative overflow-hidden rounded-3xl p-10 text-center sm:p-16">
-          <div
-            aria-hidden
-            className="absolute inset-0 opacity-40"
-            style={{
-              background:
-                "radial-gradient(ellipse 55% 65% at 50% 110%, hsl(var(--accent) / 0.35), transparent 70%)",
-            }}
-          />
-          <p className="relative font-mono text-xs uppercase tracking-[0.25em] text-accent-strong">
+          <Particles quantity={60} />
+          <BorderBeam size={220} duration={12} />
+          <p className="relative font-mono text-xs uppercase tracking-[0.25em] text-muted">
             Available for new work
           </p>
           <h2 className="relative mx-auto mt-4 max-w-2xl font-display text-3xl font-bold tracking-tight text-balance sm:text-4xl">

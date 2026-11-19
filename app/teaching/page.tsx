@@ -48,6 +48,7 @@ export default function TeachingPage() {
   return (
     <>
       <PageHeader
+        figure="terminal"
         crumbs={[{ label: "Teaching Mode" }]}
         eyebrow="edu.workspace"
         title="Teaching developers to build — and break — with intent"

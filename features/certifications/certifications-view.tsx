@@ -70,10 +70,6 @@ export function CertificationsView() {
           return (
             <StaggerItem key={cert.id} className="h-full">
               <article className="glass glass-hover group relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl p-6">
-                <div
-                  aria-hidden
-                  className="absolute -right-10 -top-10 size-32 rounded-full bg-accent/10 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
-                />
                 <div className="flex items-start justify-between">
                   <span className="flex size-12 items-center justify-center rounded-2xl bg-accent-soft text-accent-strong">
                     <Icon className="size-5" aria-hidden />

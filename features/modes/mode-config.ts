@@ -22,7 +22,7 @@ export const modes: ModeConfig[] = [
     tagline: "Full-stack engineering",
     description:
       "React, Next.js, Laravel, Node — scalable platforms with premium frontends.",
-    color: "hsl(258 90% 66%)",
+    color: "hsl(220 14% 82%)",
     bootLines: [
       "mounting /dev/workspace",
       "loading design system … ok",

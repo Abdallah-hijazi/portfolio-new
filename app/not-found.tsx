@@ -2,6 +2,7 @@ import { ArrowLeft, TerminalSquare } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { Particles } from "@/components/magic/particles";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <div className="scanlines relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
-      <div className="grid-bg absolute inset-0" aria-hidden />
+      <Particles quantity={70} />
 
       <div className="container relative z-10 max-w-2xl py-20">
         <div className="glass overflow-hidden rounded-2xl font-mono text-sm">
@@ -45,7 +46,7 @@ export default function NotFound() {
         </div>
 
         <h1 className="mt-10 text-center font-display text-6xl font-bold tracking-tight sm:text-7xl">
-          4<span className="text-gradient">0</span>4
+          4<span className="text-foreground/50">0</span>4
         </h1>
         <p className="mt-4 text-center text-muted">
           This page doesn&apos;t exist — but the rest of the system is fully

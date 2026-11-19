@@ -33,7 +33,7 @@ const config: Config = {
         },
         // Static mode colors (used by the mode switcher regardless of active mode)
         mode: {
-          developer: "hsl(258 90% 66%)",
+          developer: "hsl(220 14% 82%)",
           security: "hsl(152 90% 45%)",
           ai: "hsl(192 92% 52%)",
           teaching: "hsl(36 92% 55%)",

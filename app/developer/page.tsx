@@ -70,6 +70,7 @@ export default function DeveloperPage() {
   return (
     <>
       <PageHeader
+        figure="exploded"
         crumbs={[{ label: "Developer Mode" }]}
         eyebrow="dev.workspace"
         title="Full-stack engineering, from schema to pixel"

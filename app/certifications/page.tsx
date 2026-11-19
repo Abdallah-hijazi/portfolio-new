@@ -17,6 +17,7 @@ export default function CertificationsPage() {
   return (
     <>
       <PageHeader
+        figure="padlock"
         crumbs={[{ label: "Certifications" }]}
         eyebrow="Credentials"
         title="Certifications"
