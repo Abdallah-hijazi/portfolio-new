@@ -19,7 +19,7 @@ import { profile } from "@/data/profile";
 export const metadata: Metadata = {
   title: "Achievements",
   description:
-    "Awards and milestones: High-severity DoD DIB-VDP finding on HackerOne, 4 HackerOne badges, top 15 at Lebanon's 2026 national CTF, IEEE Xtreme V17 top-5 national finalist, Azure ML trophy, 3.8 GPA.",
+    "Awards and milestones: High-severity DoD DIB-VDP finding on HackerOne, 4 HackerOne badges, top 15 at Lebanon CTF 2026, IEEE Xtreme V17 top-5 national finalist, Azure ML trophy, 3.8 GPA.",
   alternates: { canonical: "/achievements/" },
 };
 

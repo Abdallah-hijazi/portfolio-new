@@ -37,7 +37,7 @@ const proof = [
   {
     icon: Flag,
     label: "Top 15 in Lebanon",
-    detail: "National CTF 2026",
+    detail: "Lebanon CTF 2026",
     href: "/achievements",
   },
 ];

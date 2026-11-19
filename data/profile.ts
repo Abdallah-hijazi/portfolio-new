@@ -11,7 +11,7 @@ export const profile = {
     "Developer Trainer",
   ],
   summary:
-    "Full-stack developer and security researcher with 3+ years of production experience. At Compu-vision I've shipped across 30 client codebases — Fastify/Express and Laravel APIs, React admin CMSs with role-based access control, Next.js multilingual sites, and an AI voice-ordering platform built on the OpenAI API. On HackerOne I hunt for vulnerabilities in authorized programs, with a High-severity finding resolved by the U.S. DoD's DIB-VDP, and I placed in Lebanon's top 15 at the 2026 national CTF. I enjoy teaching all of it to other developers.",
+    "Full-stack developer and security researcher with 3+ years of production experience. At Compu-vision I've shipped across 30 client codebases — Fastify/Express and Laravel APIs, React admin CMSs with role-based access control, Next.js multilingual sites, and an AI voice-ordering platform built on the OpenAI API. On HackerOne I hunt for vulnerabilities in authorized programs, with a High-severity finding resolved by the U.S. DoD's DIB-VDP, and I placed in the national top 15 at Lebanon CTF 2026. I enjoy teaching all of it to other developers.",
   shortBio:
     "I build fast, secure web platforms — and break them on purpose to make them safer.",
   languages: [

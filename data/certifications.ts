@@ -66,7 +66,7 @@ export const achievements: Achievement[] = [
   },
   {
     id: "ctf-2026",
-    title: "National CTF 2026 — Top 15 in Lebanon",
+    title: "Lebanon CTF 2026 — Top 15 Nationally",
     subtitle: "Capture the Flag, Lebanon",
     year: "2026",
     detail:
