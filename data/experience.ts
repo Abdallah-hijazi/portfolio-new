@@ -117,7 +117,7 @@ export const experience: ExperienceEntry[] = [
     summary:
       "Policy-bound vulnerability research on authorized HackerOne programs, plus freelance web application assessments.",
     achievements: [
-      "Reported an unauthenticated SSRF to the U.S. DoD Cyber Crime Center's DIB-VDP — triaged as High severity and resolved (Nov 2026).",
+      "Reported a vulnerability to the U.S. DoD Cyber Crime Center's DIB-VDP — triaged as High severity and resolved (Nov 2026).",
       "Earned four HackerOne badges from that report: OWASP A5 Broken Access Control, Insecticide (first resolved report), TrailBlazer (first of multiple reporters) and Good Samaritan.",
       "Researched HPE VDP, CoinMate and DIB-VDP scopes: OSINT asset discovery, two-account (A vs B) authorization testing, and documented false-positive analysis for every rejected lead.",
       "Authorized black-box assessment with 19 validated findings — broken object-level authorization, privilege escalation, missing session invalidation and predictable identifiers.",

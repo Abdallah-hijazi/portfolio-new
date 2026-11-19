@@ -551,7 +551,7 @@ export const projects: Project[] = [
     role: "Independent Security Researcher",
     technologies: ["Burp Suite", "OWASP Top 10", "Python", "Node.js", "nuclei", "Semgrep", "CVSS v3.1"],
     overview:
-      "Policy-bound security research on HackerOne (DoD DIB-VDP, HPE VDP, CoinMate) and freelance web assessments. My SSRF report to the U.S. DoD Cyber Crime Center's Defense Industrial Base VDP was triaged High and resolved in November 2026, earning four HackerOne badges.",
+      "Policy-bound security research on HackerOne (DoD DIB-VDP, HPE VDP, CoinMate) and freelance web assessments. My report to the U.S. DoD Cyber Crime Center's Defense Industrial Base VDP was triaged High and resolved in November 2026, earning four HackerOne badges.",
     problem:
       "Large scopes (one program had 1,090 in-scope assets) and strict rules of engagement: the work is finding the one real issue without generating noise, breaking anything, or reporting false positives.",
     solution:
@@ -564,9 +564,9 @@ export const projects: Project[] = [
     ],
     challenges: [
       {
-        title: "Proving SSRF without overreaching",
+        title: "Proving impact without overreaching",
         detail:
-          "Out-of-band callbacks, an internal-only hostname the server disclosed itself, and a timing oracle — plus a second, non-vulnerable server as the control. About 70 requests in total.",
+          "Independent lines of evidence plus a non-vulnerable control system, using the minimum traffic needed — around 70 requests for the whole proof. Details stay private under the program's disclosure policy.",
       },
       {
         title: "Saying no to your own findings",

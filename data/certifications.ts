@@ -48,7 +48,7 @@ export const achievements: Achievement[] = [
     subtitle: "HackerOne · DoD Cyber Crime Center (DC3)",
     year: "2026",
     detail:
-      "Reported an unauthenticated server-side request forgery (SSRF) on an in-scope Defense Industrial Base asset. Triaged as High severity and closed as resolved in November 2026.",
+      "Reported a vulnerability on an in-scope Defense Industrial Base asset through the DoD's coordinated disclosure program. Triaged as High severity and closed as resolved in November 2026. Technical details stay private under the program's disclosure policy.",
     icon: "shield-check",
     href: "https://hackerone.com/abdallah-hijazi",
     hrefLabel: "HackerOne profile",
