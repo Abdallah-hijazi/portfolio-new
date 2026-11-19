@@ -1,6 +1,7 @@
 import { ArrowRight, Award, BriefcaseBusiness } from "lucide-react";
 import Link from "next/link";
 
+import { Marquee } from "@/components/magic/marquee";
 import { AnimatedCounter } from "@/components/motion/animated-counter";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
@@ -19,7 +20,7 @@ export function StatsSection() {
       <div className="container grid grid-cols-2 gap-8 py-14 lg:grid-cols-4">
         {profile.stats.map((stat, i) => (
           <Reveal key={stat.label} delay={i * 0.06} className="text-center">
-            <p className="font-display text-4xl font-bold text-gradient sm:text-5xl">
+            <p className="font-display text-4xl font-bold text-foreground sm:text-5xl">
               <AnimatedCounter value={stat.value} suffix={stat.suffix} />
             </p>
             <p className="mt-2 text-sm text-muted">{stat.label}</p>
@@ -30,14 +31,50 @@ export function StatsSection() {
   );
 }
 
+const stackRows = [
+  ["React", "Next.js", "TypeScript", "Tailwind CSS", "React Query", "Zustand", "Redux Toolkit", "Material UI", "Ant Design", "next-intl", "Vite", "Framer Motion"],
+  ["Node.js", "Fastify", "Express", "Laravel", "Sequelize", "MySQL", "PostgreSQL", "Redis", "Socket.io", "OpenAI API", "Firebase", "Elasticsearch"],
+  ["Burp Suite", "OWASP Top 10", "nuclei", "subfinder", "httpx", "Semgrep", "CodeQL", "Playwright", "Scapy", "Nmap", "Python", "CVSS v3.1"],
+];
+
+export function StackMarquee() {
+  return (
+    <section aria-label="Technologies I work with" className="py-14">
+      <p className="mb-6 text-center font-mono text-[11px] uppercase tracking-[0.25em] text-muted">
+        Build · Ship · Break
+      </p>
+      <div className="space-y-3">
+        {stackRows.map((row, i) => (
+          <Marquee key={i} reverse={i % 2 === 1} duration={45 + i * 8}>
+            {row.map((tech) => (
+              <span
+                key={tech}
+                className="whitespace-nowrap rounded-full border border-line/80 bg-surface/40 px-4 py-1.5 font-mono text-xs text-muted transition-colors hover:border-foreground/30 hover:text-foreground"
+              >
+                {tech}
+              </span>
+            ))}
+          </Marquee>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export function FeaturedProjectsSection() {
-  const projects = featuredProjects.slice(0, 3);
+  const order = ["security-assessments", "ai-voice-ordering", "automotive-digital-ecosystem"];
+  const projects = [
+    ...order
+      .map((slug) => featuredProjects.find((p) => p.slug === slug))
+      .filter((p): p is (typeof featuredProjects)[number] => Boolean(p)),
+    ...featuredProjects.filter((p) => !order.includes(p.slug)),
+  ].slice(0, 3);
   return (
     <section aria-labelledby="featured-projects" className="container py-24">
       <SectionHeading
         eyebrow="Selected work"
         title="Featured projects"
-        description="Production platforms, security research, and the site you are reading — each with a full case study."
+        description="Security research, AI-powered products and production platforms — each with a full case study."
         actions={
           <Button asChild variant="outline">
             <Link href="/projects">

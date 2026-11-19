@@ -1,25 +1,23 @@
 "use client";
 
-import {
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowDown,
   ArrowRight,
+  Flag,
   Github,
   Linkedin,
   Mail,
+  ShieldCheck,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback } from "react";
 
-import { Typewriter } from "@/components/motion/typewriter";
-import { Button } from "@/components/ui/button";
+import { BorderBeam } from "@/components/magic/border-beam";
+import { Particles } from "@/components/magic/particles";
+import { ShinyText } from "@/components/magic/shiny-text";
+import { BlurInText } from "@/components/magic/text-animate";
+import { WordRotate } from "@/components/magic/word-rotate";
 import { profile } from "@/data/profile";
 import { site } from "@/lib/site";
 
@@ -29,114 +27,98 @@ const socials = [
   { href: `mailto:${site.email}`, label: "Email", icon: Mail, external: false },
 ];
 
+const proof = [
+  {
+    icon: ShieldCheck,
+    label: "High-severity finding resolved",
+    detail: "HackerOne · DoD DIB-VDP",
+    href: site.social.hackeroneBadges,
+  },
+  {
+    icon: Flag,
+    label: "Top 15 in Lebanon",
+    detail: "National CTF 2026",
+    href: "/achievements",
+  },
+];
+
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 18, filter: "blur(6px)" },
+  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+  transition: { duration: 0.7, delay, ease: easeOut },
+});
+
 /**
- * Hero with a pointer-reactive glow field. The glow is a single blurred
- * element moved with hardware-accelerated transforms — cheap to animate.
+ * Monochrome hero: a drifting particle field, a blur-in name, rotating
+ * roles, and a portrait card with a travelling border beam.
  */
-const GLOW_SIZE_PX = 672; // matches size-[42rem]
-
 export function Hero() {
-  const reduceMotion = useReducedMotion();
-  // Pointer position in px within the section; animated via transforms only.
-  const rawX = useMotionValue(0);
-  const rawY = useMotionValue(0);
-  const springX = useSpring(rawX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(rawY, { stiffness: 50, damping: 20 });
-  const glowX = useTransform(springX, (v) => v - GLOW_SIZE_PX / 2);
-  const glowY = useTransform(springY, (v) => v - GLOW_SIZE_PX / 2);
-
-  const onPointerMove = useCallback(
-    (e: React.PointerEvent<HTMLElement>) => {
-      if (reduceMotion) return;
-      const rect = e.currentTarget.getBoundingClientRect();
-      rawX.set(e.clientX - rect.left);
-      rawY.set(e.clientY - rect.top);
-    },
-    [rawX, rawY, reduceMotion],
-  );
+  const [first, last] = site.name.split(" ");
 
   return (
     <section
       aria-label="Introduction"
-      onPointerMove={onPointerMove}
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-16"
     >
-      <div className="grid-bg absolute inset-0" aria-hidden />
+      <Particles quantity={110} />
 
-      {/* Pointer-follow glow — positioned purely with transforms */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute left-0 top-0 size-[42rem] rounded-full opacity-25 blur-[120px]"
-        style={{
-          background:
-            "radial-gradient(circle, hsl(var(--accent)) 0%, transparent 65%)",
-          x: glowX,
-          y: glowY,
-        }}
-      />
+      {/* Hairline rulers — a quiet frame, not a grid */}
+      <span aria-hidden className="hero-rule absolute inset-x-0 top-[22%] h-px" />
+      <span aria-hidden className="hero-rule absolute inset-x-0 bottom-[18%] h-px" />
 
       <div className="container relative z-10 grid items-center gap-14 py-20 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: easeOut }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-4 py-1.5 font-mono text-xs text-muted"
+            {...fadeUp(0)}
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-4 py-1.5 font-mono text-xs backdrop-blur"
           >
             <span
               className="size-1.5 animate-pulse-soft rounded-full bg-terminal-green"
               aria-hidden
             />
-            {profile.availability}
+            <ShinyText>{profile.availability}</ShinyText>
           </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.08, ease: easeOut }}
-            className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl xl:text-7xl"
-          >
-            {site.name.split(" ")[0]}{" "}
-            <span className="text-gradient">{site.name.split(" ")[1]}</span>
-          </motion.h1>
+          <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl xl:text-7xl">
+            <BlurInText text={first} delay={0.1} />{" "}
+            <BlurInText text={last} delay={0.35} className="text-foreground/55" />
+          </h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.16, ease: easeOut }}
-            className="mt-5 min-h-8 font-mono text-lg text-accent-strong sm:text-xl"
+            {...fadeUp(0.55)}
+            className="mt-5 flex min-h-9 items-center gap-2 font-mono text-lg text-foreground/90 sm:text-xl"
           >
-            <Typewriter phrases={profile.roles} />
+            <span className="text-terminal-green" aria-hidden>
+              &gt;
+            </span>
+            <WordRotate words={profile.roles} />
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.24, ease: easeOut }}
+            {...fadeUp(0.65)}
             className="mt-6 max-w-xl text-lg leading-relaxed text-muted text-balance"
           >
-            {profile.shortBio} Based in {site.location}, building with React,
-            Next.js, Laravel, and Node — and probing the same stacks for
-            vulnerabilities.
+            {profile.shortBio} Based in {site.location}, shipping production
+            platforms with React, Next.js, Node.js and Laravel — and testing the
+            same stacks for vulnerabilities on HackerOne.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.32, ease: easeOut }}
-            className="mt-9 flex flex-wrap items-center gap-4"
-          >
-            <Button asChild size="lg">
-              <Link href="/projects">
-                View projects
-                <ArrowRight aria-hidden />
-              </Link>
-            </Button>
-            <Button asChild variant="secondary" size="lg">
-              <Link href="/resume">Resume</Link>
-            </Button>
+          <motion.div {...fadeUp(0.75)} className="mt-9 flex flex-wrap items-center gap-4">
+            <Link
+              href="/projects"
+              className="shimmer-btn inline-flex h-12 items-center gap-2 rounded-full bg-foreground px-7 text-base font-medium text-background transition-transform duration-300 hover:-translate-y-0.5"
+            >
+              View projects
+              <ArrowRight className="size-4" aria-hidden />
+            </Link>
+            <Link
+              href="/resume"
+              className="inline-flex h-12 items-center rounded-full border border-line px-7 text-base font-medium text-foreground transition-colors duration-300 hover:border-foreground/40"
+            >
+              Resume
+            </Link>
 
             <ul className="flex items-center gap-2" aria-label="Social links">
               {socials.map((social) => (
@@ -147,7 +129,7 @@ export function Hero() {
                       ? { target: "_blank", rel: "noreferrer" }
                       : {})}
                     aria-label={social.label}
-                    className="glass glass-hover flex size-11 items-center justify-center rounded-full text-muted hover:text-foreground"
+                    className="flex size-11 items-center justify-center rounded-full border border-line text-muted transition-colors duration-300 hover:border-foreground/40 hover:text-foreground"
                   >
                     <social.icon className="size-5" aria-hidden />
                   </a>
@@ -155,17 +137,41 @@ export function Hero() {
               ))}
             </ul>
           </motion.div>
+
+          {/* Proof strip */}
+          <motion.ul
+            {...fadeUp(0.9)}
+            className="mt-10 flex flex-wrap gap-3"
+            aria-label="Recent recognition"
+          >
+            {proof.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  {...(item.href.startsWith("http")
+                    ? { target: "_blank", rel: "noreferrer" }
+                    : {})}
+                  className="flex items-center gap-3 rounded-xl border border-line/80 bg-surface/50 px-4 py-2.5 backdrop-blur transition-colors hover:border-foreground/30"
+                >
+                  <item.icon className="size-4 text-terminal-green" aria-hidden />
+                  <span className="flex flex-col leading-tight">
+                    <span className="text-sm font-medium">{item.label}</span>
+                    <span className="font-mono text-[11px] text-muted">{item.detail}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </motion.ul>
         </div>
 
         {/* Portrait panel */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: easeOut }}
+          initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.9, delay: 0.3, ease: easeOut }}
           className="relative mx-auto hidden w-full max-w-sm lg:block"
         >
-          <div className="glass relative aspect-[4/5] overflow-hidden rounded-3xl">
-            <div className="grid-bg absolute inset-0 opacity-40" aria-hidden />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-line bg-surface">
             <Image
               src="/images/portrait.jpg"
               alt={`Portrait of ${site.name}`}
@@ -174,7 +180,7 @@ export function Hero() {
               sizes="(max-width: 1024px) 80vw, 384px"
               className="object-cover object-top"
             />
-            <div className="absolute inset-x-0 bottom-0 border-t border-line/60 bg-background/60 p-4 backdrop-blur-md">
+            <div className="absolute inset-x-0 bottom-0 border-t border-line/60 bg-background/70 p-4 backdrop-blur-md">
               <p className="font-mono text-xs text-muted">
                 <span className="text-terminal-green">$</span> whoami
               </p>
@@ -182,6 +188,8 @@ export function Hero() {
                 {site.role.toLowerCase()}
               </p>
             </div>
+            <BorderBeam size={160} duration={10} />
+            <BorderBeam size={160} duration={10} delay={5} />
           </div>
         </motion.div>
       </div>

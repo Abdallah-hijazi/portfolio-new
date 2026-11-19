@@ -101,6 +101,8 @@ export interface Achievement {
   year: string;
   detail: string;
   icon: string;
+  href?: string;
+  hrefLabel?: string;
 }
 
 export interface EducationEntry {

@@ -1,5 +1,7 @@
 import {
+  ArrowUpRight,
   Award,
+  Flag,
   GraduationCap,
   Rocket,
   ShieldCheck,
@@ -17,7 +19,7 @@ import { profile } from "@/data/profile";
 export const metadata: Metadata = {
   title: "Achievements",
   description:
-    "Awards and milestones: IEEE Xtreme V17 top-5 national finalist, Azure ML Solution Design trophy, 3.8 GPA, 15+ security findings, 25+ delivered projects.",
+    "Awards and milestones: High-severity DoD DIB-VDP finding on HackerOne, 4 HackerOne badges, top 15 at Lebanon's 2026 national CTF, IEEE Xtreme V17 top-5 national finalist, Azure ML trophy, 3.8 GPA.",
   alternates: { canonical: "/achievements/" },
 };
 
@@ -27,6 +29,7 @@ const icons: Record<string, typeof Trophy> = {
   "graduation-cap": GraduationCap,
   "shield-check": ShieldCheck,
   rocket: Rocket,
+  flag: Flag,
 };
 
 export default function AchievementsPage() {
@@ -76,6 +79,17 @@ export default function AchievementsPage() {
                     <p className="mt-3 leading-relaxed text-muted">
                       {achievement.detail}
                     </p>
+                    {achievement.href && (
+                      <a
+                        href={achievement.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 inline-flex items-center gap-1 font-mono text-xs text-muted underline-offset-4 hover:text-foreground hover:underline"
+                      >
+                        {achievement.hrefLabel ?? "Verify"}
+                        <ArrowUpRight className="size-3" aria-hidden />
+                      </a>
+                    )}
                   </div>
                 </article>
               </Reveal>

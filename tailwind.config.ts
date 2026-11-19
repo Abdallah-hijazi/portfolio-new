@@ -80,6 +80,10 @@ const config: Config = {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
+        "marquee-x": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
         "glitch-x": {
           "0%, 100%": { transform: "translateX(0)" },
           "20%": { transform: "translateX(-2px)" },
@@ -95,6 +99,7 @@ const config: Config = {
         shimmer: "shimmer 3s linear infinite",
         "pulse-soft": "pulse-soft 2.4s ease-in-out infinite",
         marquee: "marquee 40s linear infinite",
+        "marquee-x": "marquee-x 40s linear infinite",
         "glitch-x": "glitch-x 0.35s ease-in-out both",
       },
     },

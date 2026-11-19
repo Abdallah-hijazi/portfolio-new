@@ -32,10 +32,15 @@ export default function ResumePage() {
               Web version below — grab the PDF or print it.
             </p>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Button asChild>
+              <a href={withBasePath(site.securityCvPath)} download>
+                <Download aria-hidden /> Security CV
+              </a>
+            </Button>
+            <Button asChild variant="secondary">
               <a href={withBasePath(site.cvPath)} download>
-                <Download aria-hidden /> Download PDF
+                <Download aria-hidden /> Developer CV
               </a>
             </Button>
             <PrintButton>

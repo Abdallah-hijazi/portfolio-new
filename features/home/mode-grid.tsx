@@ -2,6 +2,14 @@
 
 import { ArrowUpRight, Brain, Code2, GraduationCap, ShieldHalf } from "lucide-react";
 
+import {
+  ExplodedFigure,
+  PadlockFigure,
+  PlotFigure,
+  TerminalFigure,
+  useFigurePointer,
+  type FigurePointer,
+} from "@/components/figures";
 import { Stagger, StaggerItem } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { useMode } from "@/features/modes/mode-context";
@@ -15,6 +23,13 @@ const modeIcons: Record<ModeId, typeof Code2> = {
   teaching: GraduationCap,
 };
 
+const modeFigures: Record<ModeId, (props: { p: FigurePointer }) => React.ReactNode> = {
+  developer: ExplodedFigure,
+  security: PadlockFigure,
+  ai: PlotFigure,
+  teaching: TerminalFigure,
+};
+
 /** "Choose your workspace" — entry points into the four identity modes. */
 export function ModeGrid() {
   const { switchMode } = useMode();
@@ -24,7 +39,7 @@ export function ModeGrid() {
       <SectionHeading
         eyebrow="One person, four workspaces"
         title="Boot an identity"
-        description="Each mode is a themed workspace with its own interface — switching feels like changing operating systems, not pages. Try keys 1–4."
+        description="Each mode is a themed workspace with its own interface. Hover a card to wake its figure, click to boot it — or press 1–4."
         align="center"
       />
 
@@ -47,26 +62,30 @@ function ModeCard({
   onLaunch: () => void;
 }) {
   const Icon = modeIcons[mode.id];
+  const Figure = modeFigures[mode.id];
+  const { value, handlers } = useFigurePointer();
 
   return (
     <button
       type="button"
       onClick={onLaunch}
+      {...handlers}
       className="glass glass-hover group relative flex h-full w-full flex-col items-start gap-4 overflow-hidden rounded-2xl p-6 text-left"
       aria-label={`Launch ${mode.label}`}
     >
       <span
         aria-hidden
-        className="absolute -right-16 -top-16 size-40 rounded-full opacity-[0.13] blur-2xl transition-opacity duration-500 group-hover:opacity-30"
-        style={{ background: mode.color }}
-      />
+        className="-mx-2 -mt-2 block aspect-[5/4] self-stretch rounded-xl border border-line/60 bg-background/40"
+      >
+        <Figure p={value} />
+      </span>
 
       <span className="flex items-center justify-between self-stretch">
         <span
-          className="flex size-11 items-center justify-center rounded-xl"
-          style={{ background: `${mode.color}22`, color: mode.color }}
+          className="flex size-9 items-center justify-center rounded-lg border border-line"
+          style={{ color: mode.color }}
         >
-          <Icon className="size-5" aria-hidden />
+          <Icon className="size-4" aria-hidden />
         </span>
         <span className="flex items-center gap-2">
           <kbd className="kbd">{mode.shortcut}</kbd>

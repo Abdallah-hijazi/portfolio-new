@@ -43,6 +43,37 @@ export const certifications: Certification[] = [
 
 export const achievements: Achievement[] = [
   {
+    id: "dib-vdp-high",
+    title: "High-Severity Vulnerability — U.S. DoD DIB-VDP",
+    subtitle: "HackerOne · DoD Cyber Crime Center (DC3)",
+    year: "2026",
+    detail:
+      "Reported an unauthenticated server-side request forgery (SSRF) on an in-scope Defense Industrial Base asset. Triaged as High severity and closed as resolved in November 2026.",
+    icon: "shield-check",
+    href: "https://hackerone.com/abdallah-hijazi",
+    hrefLabel: "HackerOne profile",
+  },
+  {
+    id: "hackerone-badges",
+    title: "4 HackerOne Badges",
+    subtitle: "Broken Access Control · Insecticide · TrailBlazer · Good Samaritan",
+    year: "2026",
+    detail:
+      "OWASP A5 Broken Access Control (valid report), Insecticide (first report resolved), TrailBlazer (first of multiple reporters to find the issue) and Good Samaritan (resolved with a non-bounty program).",
+    icon: "award",
+    href: "https://hackerone.com/abdallah-hijazi/badges?type=user",
+    hrefLabel: "View badges on HackerOne",
+  },
+  {
+    id: "ctf-2026",
+    title: "National CTF 2026 — Top 15 in Lebanon",
+    subtitle: "Capture the Flag, Lebanon",
+    year: "2026",
+    detail:
+      "Placed between 5th and 13th nationally (official leaderboard pending). Web exploitation work included an ORDER BY SQL injection behind a WAF, client-side path traversal and cache-deception analysis.",
+    icon: "flag",
+  },
+  {
     id: "ieee-xtreme",
     title: "IEEE Xtreme V17 — Top 5 National Finalist",
     subtitle: "Competitive programming, Lebanon",

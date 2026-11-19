@@ -4,22 +4,41 @@ import type { ExperienceEntry } from "./types";
 export const experience: ExperienceEntry[] = [
   {
     id: "compu-vision",
-    role: "Web Developer",
+    role: "Full-Stack Web Developer",
     company: "Compu-vision",
     type: "Full-time",
     start: "Dec 2024",
-    location: "Lebanon",
+    location: "Lebanon (clients in Lebanon & Qatar)",
     summary:
-      "Building backend services and modern frontend applications for automotive digital platforms.",
+      "Full-stack delivery across 30 client codebases — automotive dealer sites, clinic billing, garage accounting, e-commerce, and an AI ordering platform.",
     achievements: [
-      "Develop backend services using PHP and JavaScript for automotive digital platforms.",
-      "Build modern frontend applications with React.js and Next.js, improving maintainability and responsiveness.",
-      "Design and implement RESTful APIs enabling scalable communication between services.",
-      "Integrate secure payment systems to ensure reliable online transactions.",
-      "Support debugging, testing, and production deployment, improving system reliability.",
+      "Committed to 30 production repositories in the company's GitHub organisation, spanning APIs, admin CMSs and public websites.",
+      "Built Node.js APIs on Fastify and Express with Sequelize (MySQL/PostgreSQL), JWT and Passport OAuth (Google, Apple, Facebook), Swagger docs, Redis and Socket.io real-time events.",
+      "Built React admin CMSs with role-based access control (CASL), Redux Toolkit, Material UI / Ant Design, and Arabic–English (RTL) i18n.",
+      "Shipped multilingual Next.js sites with next-intl, React Query and Zustand for automotive brands in Qatar — including test-drive booking, maps and offer management.",
+      "Developed an AI voice-ordering platform: OpenAI-powered order parsing, speech-to-text / text-to-speech, FFmpeg audio processing, Firebase push and live chat.",
+      "Built clinic billing (invoices, signed manual receipts, recurring charges, multi-currency income-split reports) and Laravel garage accounting (job/supplier invoices, vouchers, exchange rates).",
+      "Extended a Laravel/Bagisto e-commerce store with Elasticsearch search, cart/checkout redesign, promotions and delivery-charge logic.",
     ],
-    technologies: ["PHP", "JavaScript", "React", "Next.js", "REST APIs", "MySQL"],
-    modes: ["developer"],
+    technologies: [
+      "Node.js",
+      "Fastify",
+      "Express",
+      "Sequelize",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Laravel",
+      "MySQL",
+      "PostgreSQL",
+      "Socket.io",
+      "OpenAI API",
+    ],
+    metrics: [
+      { label: "Client codebases", value: "30" },
+      { label: "Stacks", value: "Node · React · Laravel" },
+    ],
+    modes: ["developer", "ai"],
   },
   {
     id: "cutting-edge",
@@ -90,20 +109,25 @@ export const experience: ExperienceEntry[] = [
   },
   {
     id: "pentesting",
-    role: "Freelance Penetration Tester & Bug Bounty Hunter",
+    role: "Security Researcher (HackerOne) & Freelance Penetration Tester",
     company: "Independent",
     type: "Independent",
     start: "2024",
     location: "Remote",
     summary:
-      "Security assessments of web applications, aligned with the OWASP Top 10.",
+      "Policy-bound vulnerability research on authorized HackerOne programs, plus freelance web application assessments.",
     achievements: [
-      "Reported 15+ vulnerabilities across engagements and bug bounty programs.",
-      "Performed manual web application testing with Burp Suite: auth flows, session handling, access control, and injection.",
-      "Produced reproducible findings with severity ratings and clear remediation guidance.",
+      "Reported an unauthenticated SSRF to the U.S. DoD Cyber Crime Center's DIB-VDP — triaged as High severity and resolved (Nov 2026).",
+      "Earned four HackerOne badges from that report: OWASP A5 Broken Access Control, Insecticide (first resolved report), TrailBlazer (first of multiple reporters) and Good Samaritan.",
+      "Researched HPE VDP, CoinMate and DIB-VDP scopes: OSINT asset discovery, two-account (A vs B) authorization testing, and documented false-positive analysis for every rejected lead.",
+      "Authorized black-box assessment with 19 validated findings — broken object-level authorization, privilege escalation, missing session invalidation and predictable identifiers.",
+      "Write submission-ready reports with CVSS v3.1, CWE, reproduction steps and remediation; respect rate limits and rules of engagement.",
     ],
-    technologies: ["Burp Suite", "OWASP Top 10", "Python", "TLS/SSL", "JWT"],
-    metrics: [{ label: "Findings", value: "15+" }],
+    technologies: ["Burp Suite", "OWASP Top 10", "Python", "Node.js", "nuclei", "Semgrep", "Playwright"],
+    metrics: [
+      { label: "DIB-VDP", value: "High · Resolved" },
+      { label: "HackerOne badges", value: "4" },
+    ],
     modes: ["security"],
   },
   {
@@ -125,4 +149,6 @@ export const experience: ExperienceEntry[] = [
   },
 ];
 
-export const recentExperience = experience.slice(0, 3);
+export const recentExperience = ["compu-vision", "pentesting", "cutting-edge"]
+  .map((id) => experience.find((e) => e.id === id))
+  .filter((e): e is ExperienceEntry => Boolean(e));
